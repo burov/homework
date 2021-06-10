@@ -10,7 +10,7 @@
 
 Functions signature should be equals to functions presented below 
 ``` go
-func fibonacci(n interface{}) (interface{}) {...}
+func Fibonacci(n interface{}) (interface{}) {...}
 
 func fibonnaciUint(n uint) (uint) {...}
 

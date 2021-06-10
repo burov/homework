@@ -7,7 +7,7 @@ import (
 
 func TestFibonacci(t *testing.T) {
 	var nUint uint = 3
-	rInterface := fibonacci(nUint)
+	rInterface := Fibonacci(nUint)
 
 	var expectedUint uint = 2
 	if rUint, ok := rInterface.(uint); !ok || rUint != expectedUint {
@@ -16,7 +16,7 @@ func TestFibonacci(t *testing.T) {
 	}
 
 	var nInt int = 5
-	rInterface = fibonacci(nInt)
+	rInterface = Fibonacci(nInt)
 
 	var expectedInt int = 5
 	if rInt, ok := rInterface.(int); !ok || rInt != expectedInt {
@@ -25,7 +25,7 @@ func TestFibonacci(t *testing.T) {
 	}
 
 	var nFloat64 float64 = 7.0
-	rInterface = fibonacci(nFloat64)
+	rInterface = Fibonacci(nFloat64)
 
 	var expectedFloat64 float64 = 13.0
 	if rFloat64, ok := rInterface.(float64); !ok || rFloat64 != expectedFloat64 {
