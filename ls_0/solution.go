@@ -1,5 +1,9 @@
 package solution
 
+import ( "github.com/kyokomi/emoji/v2"
+)
+
 func GetMessage() string {
-	return ""
+	x := emoji.Sprint("Hello from :flag_pl:!")
+	return x
 }
