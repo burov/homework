@@ -5,5 +5,10 @@ func iWillPanic() {
 }
 
 func catchPanic() {
+	defer func() {
+		if err := recover(); err != nil {
+			// No panic, everything is under control.
+		}
+	}()
 	iWillPanic()
 }
