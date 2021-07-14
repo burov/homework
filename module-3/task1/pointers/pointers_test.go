@@ -14,9 +14,9 @@ func Test_doubleValues(t *testing.T) {
 	}
 
 	for i, tt := range tests {
-		out, expected := *tt.in, *tt.expected
+		out, expected := tt.in, tt.expected
 		if DoubleValues(tt.in); expected == out {
-			t.Errorf("Unexpected result in Test #%d, expected %+v, got %+v", i, tt.expected, *tt.in)
+			t.Errorf("Unexpected result in Test #%d, expected %+v, got %+v", i, tt.expected, tt.in)
 		}
 	}
 }
