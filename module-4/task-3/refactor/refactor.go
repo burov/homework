@@ -34,6 +34,11 @@ func countLines(raw []byte) int {
 func main() {
 	path := "./README.md"
 
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println(err)
+		}
+	}()
 	raw := readFile(path)
 
 	fmt.Println(countLines(raw))
