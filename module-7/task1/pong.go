@@ -18,36 +18,23 @@ func play(players [2]chan struct{}) (winner string) {
 	players[0] <- struct{}{}
 	wg.Add(2)
 
-	go func() {
+	ping := func(player1, player2 chan struct{}) {
 		for {
 			if gameEnded(points) {
 				wg.Done()
 				return
-			} else {
-				<-players[0]
-				if ballMissed() {
-					fmt.Println("Ball lost by", player1)
-					points[1]++
-				}
-				players[1] <- struct{}{}
 			}
-		}
-	}()
-	go func() {
-		for {
-			if gameEnded(points) {
-				wg.Done()
-				return
-			} else {
-				<-players[1]
-				if ballMissed() {
-					fmt.Println("Ball lost by", player2)
-					points[0]++
-				}
-				players[0] <- struct{}{}
+			<-player1
+			if ballMissed() {
+				fmt.Println("Ball lost by", player1)
+				points[1]++
 			}
+			player2 <- struct{}{}
 		}
-	}()
+	}
+
+	go ping(players[0], players[1])
+	go ping(players[1], players[0])
 
 	for {
 		if gameEnded(points) {
